@@ -1,4 +1,4 @@
-const selectcity = (state = '', action) => {
+const selectcity = (state = 'Mumbai', action) => {
   switch (action.type) {
     case 'SELECT_CITY':
       //console.log("SELECT_CITY",action.payload);

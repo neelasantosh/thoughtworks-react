@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { selectedFlight } from '../actions'
-import { Image, List, Input, Grid, Label, Form } from 'semantic-ui-react';
-import Slider, { createSliderWithTooltip } from 'rc-slider';
+import { Image, List, Grid, Form, Container } from 'semantic-ui-react';
+import Slider from 'rc-slider';
 import ToSearchQuery from './search';
 import FromSearchQuery from './fromsearch';
 import 'rc-slider/assets/index.css';
 import _ from 'lodash';
 
-const style = { width: 400, margin: 50 };
+const style = { margin: 50 };
 const Range = Slider.Range;
 
 class TwoWay extends Component{
@@ -80,9 +79,11 @@ class TwoWay extends Component{
             </Form>
           </Grid.Column>
         </Grid>
-        <div style={style}>
-          <Range dots step={10} defaultValue={[saveMin, saveMax]} onAfterChange={this.log} />
-        </div>
+        <Container>
+          <div style={style}>
+            <Range dots step={10} defaultValue={[saveMin, saveMax]} onAfterChange={this.log} />
+          </div>
+        </Container>
         <List animated verticalAlign='middle'>
           {
             savedData.length === 0 ? 'No result' :

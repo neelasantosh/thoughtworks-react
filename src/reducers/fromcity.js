@@ -1,4 +1,4 @@
-const fromcity = (state = 'Mumbai', action) => {
+const fromcity = (state = 'Hyderabad', action) => {
   switch (action.type) {
     case 'FROM_SEARCH':
       //console.log("FROM_SEARCH",action.payload);

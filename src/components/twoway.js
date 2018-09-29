@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { selectedFlight } from '../actions'
-import { Image, List, Input, Grid, Label, Form } from 'semantic-ui-react';
-import Slider, { createSliderWithTooltip } from 'rc-slider';
+import { Image, List, Grid, Form, Container } from 'semantic-ui-react';
+import Slider from 'rc-slider';
 import SearchQuery from './search';
 import FromSearchQuery from './fromsearch';
 import 'rc-slider/assets/index.css';
 import _ from 'lodash';
 
-const style = { width: 400, margin: 50 };
+const style = { margin: 50 };
 const Range = Slider.Range;
 
 class TwoWay extends Component{
@@ -21,7 +20,7 @@ class TwoWay extends Component{
       minPrice:0
     }
   }
-
+    
   componentDidMount(){
     let prices = []
     let filtered = _.filter(this.props.twowaydata,{'from':this.props.fromcity,'to':this.props.selectcity})
@@ -83,9 +82,21 @@ class TwoWay extends Component{
             </Form>
           </Grid.Column>
         </Grid>
-        <div style={style}>
-          <Range dots step={10} defaultValue={[saveMin, saveMax]} onAfterChange={this.log} />
-        </div>
+        <Container>
+          <Grid columns='equal'>
+            <Grid.Column>
+              <Form>
+                <Form.Group inline widths='equal'>
+                <p>Return Date </p>
+                <input type='date' />
+                </Form.Group>
+              </Form>
+            </Grid.Column>
+          </Grid>
+          <div style={style}>
+            <Range dots step={10} defaultValue={[saveMin, saveMax]} onAfterChange={this.log} />
+          </div>
+        </Container>
         <List animated verticalAlign='middle'>
           {
             savedDatas.length === 0 ? 'No result' :
@@ -94,7 +105,7 @@ class TwoWay extends Component{
                 <List.Item>
                   <Image avatar src='' />
                   <List.Content>
-                    <List.Header>{item.from} to {item.to}</List.Header>
+                    <List.Header>{item.from} to {item.to} and its returns tickets</List.Header>
                     <List.Description>
                       {item.flight} is offering the price of Rs. {item.price}
                     </List.Description>

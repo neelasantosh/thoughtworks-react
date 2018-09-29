@@ -14,7 +14,8 @@ class ToSearchQuery extends Component{
   }
 
   componentWillMount(){
-    this.setState({cityState:_.uniqBy(this.props.cities,'title')})
+    //console.log(this.props);
+    this.setState({cityState:_.uniqBy(this.props.cities,'title'),value:this.props.selectcity})
   }
 
   componentWillReceiveProps(nextProps){
@@ -23,13 +24,13 @@ class ToSearchQuery extends Component{
     }
   }
 
-
+  resetComponent = () => this.setState({ isLoading: false, results: [], value: '' })
 
   handleSearchChange = (e, { value }) => {
     this.setState({ isLoading: true, value })
 
     setTimeout(() => {
-
+      if (this.state.value.length < 1) return this.resetComponent()
       const re = new RegExp(_.escapeRegExp(this.state.value), 'i')
       const isMatch = result => re.test(result.title)
 
@@ -56,6 +57,7 @@ class ToSearchQuery extends Component{
             onSearchChange={this.handleSearchChange}
             results={results}
             value={value}
+            onFocus={this.resetComponent}
             {...this.props}
           />
         </Grid.Column>
@@ -73,7 +75,9 @@ const mapDispatchtoProps = dispatch => {
 
 const mapStateToProps = state => ({
   flight:state.flight,
-  cities:state.cities
+  cities:state.cities,
+  selectcity:state.selectcity,
+  fromcity:state.fromcity
 })
 
 export default connect(mapStateToProps,mapDispatchtoProps)(ToSearchQuery)
