@@ -2,3 +2,4 @@
 2. Run the App using npm run start
 
 Note : The list of available places are  : Hyderabad, Mumbai, Indore, Vizag, Gujarat, Chennai and Banglore
+By default from and to places are Hyderabad and Mumbai
