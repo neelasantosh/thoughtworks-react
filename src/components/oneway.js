@@ -82,6 +82,7 @@ class TwoWay extends Component{
         </Grid>
         <Container>
           <div style={style}>
+            <p>Price Range</p>
             <Range dots step={10} defaultValue={[saveMin, saveMax]} onAfterChange={this.log} />
           </div>
         </Container>
