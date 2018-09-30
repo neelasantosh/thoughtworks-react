@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { Image, List, Grid, Form, Container } from 'semantic-ui-react';
 import Slider from 'rc-slider';
+import FlightIcon from '../assets/images/smallflight.jpg';
 import SearchQuery from './search';
 import FromSearchQuery from './fromsearch';
 import 'rc-slider/assets/index.css';
@@ -20,7 +21,7 @@ class TwoWay extends Component{
       minPrice:0
     }
   }
-    
+
   componentDidMount(){
     let prices = []
     let filtered = _.filter(this.props.twowaydata,{'from':this.props.fromcity,'to':this.props.selectcity})
@@ -94,6 +95,7 @@ class TwoWay extends Component{
             </Grid.Column>
           </Grid>
           <div style={style}>
+            <p>Price Range</p>
             <Range dots step={10} defaultValue={[saveMin, saveMax]} onAfterChange={this.log} />
           </div>
         </Container>
@@ -103,7 +105,7 @@ class TwoWay extends Component{
             savedDatas.map((item)=>{
               return(
                 <List.Item>
-                  <Image avatar src='' />
+                  <Image avatar src={FlightIcon} />
                   <List.Content>
                     <List.Header>{item.from} to {item.to} and its returns tickets</List.Header>
                     <List.Description>

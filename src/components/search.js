@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { Search, Grid } from 'semantic-ui-react'
-import { selectedFlight, selectedCity  } from '../actions'
+import { selectedCity  } from '../actions'
 import _ from 'lodash';
 
 class ToSearchQuery extends Component{
@@ -19,7 +19,7 @@ class ToSearchQuery extends Component{
   }
 
   componentWillReceiveProps(nextProps){
-    if (this.props!=nextProps) {
+    if (this.props!==nextProps) {
       this.setState({cityState:_.uniqBy(nextProps.cities,'title')})
     }
   }

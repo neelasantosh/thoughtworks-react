@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { Image, List, Grid, Form, Container } from 'semantic-ui-react';
+import FlightIcon from '../assets/images/smallflight.jpg';
 import Slider from 'rc-slider';
 import ToSearchQuery from './search';
 import FromSearchQuery from './fromsearch';
@@ -90,7 +91,7 @@ class TwoWay extends Component{
             savedData.map((item)=>{
               return(
                 <List.Item>
-                  <Image avatar src='' />
+                  <Image avatar src={FlightIcon} />
                   <List.Content>
                     <List.Header>{item.from} to {item.to}</List.Header>
                     <List.Description>
